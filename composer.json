@@ -6,6 +6,7 @@
   "require": {
     "vlucas/phpdotenv": "^5.6",
     "monolog/monolog": "^3.8",
-    "league/csv": "^9.21"
+    "league/csv": "^9.21",
+    "symfony/process": "^6.4"
   }
 }

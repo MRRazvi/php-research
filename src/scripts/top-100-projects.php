@@ -31,7 +31,8 @@ $repos = $data['items'];
 foreach ($repos as $repo) {
   $projects[] = [
     'id' => $repo['id'],
-    'name' => $repo['full_name'],
+    'name' => $repo['name'],
+    'full_name' => $repo['full_name'],
     'stars' => $repo['watchers'],
     'forks' => $repo['forks'],
     'size' => $repo['size'],
@@ -60,6 +61,7 @@ $csv = Writer::createFromPath(
 $csv->insertOne([
   'ID',
   'Name',
+  'Full Name',
   'Stars',
   'Forks',
   'Size',
