@@ -57,5 +57,22 @@ $csv = Writer::createFromPath(
   'w+'
 );
 
-$csv->insertOne(array_keys($projects));
+$csv->insertOne([
+  'ID',
+  'Name',
+  'Stars',
+  'Forks',
+  'Size',
+  'Programming Language',
+  'Default Branch',
+  'Topics',
+  'Open Issues',
+  'License',
+  'Repo URL',
+  'Owner',
+  'Website',
+  'Created At',
+  'Updated At'
+]);
+
 $csv->insertAll($projects);
