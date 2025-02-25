@@ -39,7 +39,7 @@ foreach ($repos as $repo) {
     'branch:default' => $repo['default_branch'],
     'topics' => implode(', ', $repo['topics']),
     'issues:open' => $repo['open_issues'],
-    'license' => $repo['license']['name'],
+    'license' => $repo['license']['name'] ?? '',
     'url' => $repo['html_url'],
     'owner:url' => $repo['owner']['html_url'],
     'home' => $repo['homepage'],
