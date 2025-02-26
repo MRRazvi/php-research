@@ -40,7 +40,11 @@ try {
   $traverser->addVisitor($visitor);
   $traverser->traverse($statements);
 
-  dump($data);
+  $result = array_intersect_key($data, array_flip($php_functions));
+
+  arsort($result);
+
+  dump($result);
 } catch (Exception $error) {
   dump($error->getMessage());
 }
