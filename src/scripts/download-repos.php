@@ -5,7 +5,7 @@ use Symfony\Component\Process\Process;
 
 require_once __DIR__ . '/../init.php';
 
-$csv = Reader::createFromPath(__DIR__ . '/../../docs/top-100-projects-php.csv', 'r');
+$csv = Reader::createFromPath(__DIR__ . '/../../docs/top-100-projects/php.csv', 'r');
 $csv->setHeaderOffset(0);
 
 $records = $csv->getRecords();
