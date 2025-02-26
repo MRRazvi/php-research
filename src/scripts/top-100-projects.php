@@ -9,8 +9,6 @@ require_once __DIR__ . '/../init.php';
 $client = HttpClient::create();
 $filesystem = new Filesystem();
 
-$projects = [];
-
 $languages = [
   'html',
   'css',
@@ -34,6 +32,8 @@ $languages = [
 ];
 
 foreach ($languages as $language) {
+  $projects = [];
+
   $file_path = sprintf('%s/top-100-projects/%s.csv', TH_DOCS_PATH, $language);
   if ($filesystem->exists($file_path)) {
     dump(sprintf('skip:%s', $language));
