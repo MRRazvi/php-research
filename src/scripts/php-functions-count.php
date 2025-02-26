@@ -1,6 +1,7 @@
 <?php
 
 use PhpParser\Node;
+use League\Csv\Writer;
 use PhpParser\ParserFactory;
 use PhpParser\NodeTraverser;
 use PhpParser\NodeVisitorAbstract;
@@ -66,8 +67,48 @@ foreach ($files as $file) {
   }
 }
 
-$result = array_intersect_key($data, array_flip($php_functions));
+$built_in_functions = array_intersect_key($data, array_flip($php_functions));
+$custom_functions = array_diff_key($data, array_flip($php_functions));
 
-arsort($result);
+arsort($built_in_functions);
+arsort($custom_functions);
 
-dump($result);
+$csv = Writer::createFromPath(
+  sprintf(
+    '%s/php-functions-count/built-in.csv',
+    __DIR__ . '/../../docs'
+  ),
+  'w+'
+);
+
+$csv->insertOne([
+  'Function Name',
+  'Count'
+]);
+
+foreach ($built_in_functions as $name => $count) {
+  $csv->insertOne([
+    $name,
+    $count
+  ]);
+}
+
+$csv = Writer::createFromPath(
+  sprintf(
+    '%s/php-functions-count/custom.csv',
+    __DIR__ . '/../../docs'
+  ),
+  'w+'
+);
+
+$csv->insertOne([
+  'Function Name',
+  'Count'
+]);
+
+foreach ($custom_functions as $name => $count) {
+  $csv->insertOne([
+    $name,
+    $count
+  ]);
+}
